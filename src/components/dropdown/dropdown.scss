@@ -1,0 +1,12 @@
+@import "./__selected/dropdown__selected.scss";
+@import "./__selected/dropdown__selected_s.scss";
+@import "./__selected/dropdown__selected_white.scss";
+@import "./__content/dropdown__content.scss";
+@import "./__content/_theme/dropdown__content_theme_left.scss";
+@import "./__content/_theme/dropdown__content_theme_right.scss";
+@import "./__content/_theme/dropdown__content_theme_city.scss";
+
+
+.dropdown {
+  position: relative;
+}

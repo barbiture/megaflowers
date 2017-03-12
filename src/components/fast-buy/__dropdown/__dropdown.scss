@@ -1,0 +1,26 @@
+#toggle {
+  cursor: pointer;
+}
+.fastByDropdown {
+  position: relative;
+  ul {
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    display: none;
+    opacity: 0;
+    transition: all .4s ease;
+    li {
+      list-style: none;
+      cursor: pointer;
+      margin-bottom: 5px;
+      &:hover {
+        color: pink;
+      }
+    }
+  }
+}
+// #fastByDropdown {
+//   display: none;
+// }

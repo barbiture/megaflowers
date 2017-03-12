@@ -1,23 +1,16 @@
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
-    path = require('path'),
+var path = require('path'),
+    webpack = require('webpack')
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
     HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     main: [
-            './src/components/headerCity/headerCity.js',
-            './src/components/headerCurency/headerCurency.js',
-            './src/components/headerLanguage/headerLanguage.js',
-            './src/components/headerTel/headerTel.js',
-            './src/components/headerCall/headerCall.js',
-            './src/components/headerCarousel/headerCarousel',
-            './src/components/fastByRange/fastByRange.js',
-            './src/components/fastByDropdown/fastByDropdown.js',
-            './src/components/fastByToggle/fastByToggle.js'
+            './src/js/main.js',
+            './src/components/dropdown/dropdown.js',
+            './src/components/search-autocomplete/search-autocomplete.js',
+            'webpack/hot/dev-server',
+            'webpack-dev-server/client?http://localhost:3030'
           ],
-    catalog: [
-            './src/components/catalog/catalog.js'
-          ]
   },
   output: {
     path: path.join( __dirname, './dist/'),
@@ -25,12 +18,12 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.html$/,
-        use: [{
-          loader: 'html-loader'
-        }]
-      },
+      // {
+      //   test: /\.html$/,
+      //   use: [{
+      //     loader: 'html-loader'
+      //   }]
+      // },
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
@@ -48,6 +41,7 @@ module.exports = {
     ]
   },
   plugins: [
+    // new webpack.HotModuleReplacementPlugin()
     new HtmlWebpackPlugin({
       title: 'megaflowers',
       // minify: {
@@ -55,27 +49,20 @@ module.exports = {
       // },
       chunks: ['main'],
       hash: true,
-      template: './src/template/main.html',
+      // template: './src/main.html',
       filename: 'main.html'
     }),
-    new HtmlWebpackPlugin({
-      title: 'megaflowers',
-      // minify: {
-      //   collapseWhitespace: true
-      // },
-      chunks: ['catalog'],
-      hash: true,
-      template: './src/template/catalog.html',
-      filename: 'catalog.html'
-    }),
-    new ExtractTextPlugin("[name].css"),
-    // new BrowserSyncPlugin({
-    //   // browse to http://localhost:3000/ during development, 
-    //   // ./public directory is being served 
-    //   host: 'localhost',
-    //   port: 3000,
-    //   server: { baseDir: ['./dist'] },
-    //   browser: '/Applications/Google\ Chrome.app'
-    // })
+    new ExtractTextPlugin("./style/styles.css"),
   ]
 }
+
+
+
+// new BrowserSyncPlugin({
+//   // browse to http://localhost:3000/ during development, 
+//   // ./public directory is being served 
+//   host: 'localhost',
+//   port: 3000,
+//   server: { baseDir: ['./dist'] },
+//   browser: '/Applications/Google\ Chrome.app'
+// })
